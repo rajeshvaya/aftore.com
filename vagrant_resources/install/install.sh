@@ -37,6 +37,7 @@ if ! command -v sqlite3; then
     sudo apt-get install sqlite3 -y
 fi
 
+
 #mysql
 if ! command -v mysql; then
     echo "=============================="
@@ -48,6 +49,9 @@ if ! command -v mysql; then
 
     apt-get install python-dev -y
     apt-get install libmysqlclient-dev -y
+    apt-get install mysql-client-core-5.5 -y
+    apt-get install mysql-server mysql-client -y
+    
 fi
 
 # pip
