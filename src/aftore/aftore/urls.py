@@ -19,5 +19,5 @@ urlpatterns = patterns('',
     url('', include('social.apps.django_app.urls', namespace='social')), # social login
     url('', include('django.contrib.auth.urls', namespace='auth')),
 
-    url(r'^.*$', 'aftore.views.index'), # default page for 404 not found
+    url(r'^.*$', 'aftore.views.index', name='home'), # default page for 404 not found
 )
