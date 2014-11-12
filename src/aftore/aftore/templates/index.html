@@ -1,10 +1,30 @@
 {% extends "layout/default/template.html" %}
+{% load aftore_extras %}
 
 {% block content %}
 	<div class="container-fluid">
         <div class="row">
             <div class="col-md-10">
-                CONTENT
+                <div class="container cards-container">
+                    <div class="row">
+                        {% for i in 8|get_range %}
+                        <div class="col-md-4 card-container">
+                            <div class="card">
+                                <div class="namr">Rajesh Vaya</div>
+                                <div class="title">Me building up a computer</div>
+                                <div class="datetime">4 hours ago</div>
+                                <hr/>
+                                <div class="photos-container">
+                                    <div class="photo">img1</div>
+                                    <div class="photo">img2</div>
+                                </div><!-- photos-container -->
+                            </div><!-- card -->
+                        </div><!-- card container -->
+                        {% endfor %}
+                    </div><!-- row -->
+                </div><!-- container -->
+
+
                 <div class="pagination-container">
                     <ul class="pagination pagination-centered">
                         {% if stories.has_previous %}

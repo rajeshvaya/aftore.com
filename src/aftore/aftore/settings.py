@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     #'south',
     'crispy_forms',
     'auth',
-    'social.apps.django_app.default'
+    'social.apps.django_app.default',
+    'aftore',
 )
 
 MIDDLEWARE_CLASSES = (
