@@ -7,6 +7,9 @@ requests
 django-crispy-forms
 python-social-auth
 
+#other
+Pillow
+
 #migration / database
 South==0.8.4
 
