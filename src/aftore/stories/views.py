@@ -16,8 +16,9 @@ def index(request):
 def story(request, id=0):
 	return render(request, 'stories/story.html', {})
 
+@login_required
 def submit(request):
-	pass
+	return render(request, 'stories/submit.html', {})
 
 def delete(request):
 	pass

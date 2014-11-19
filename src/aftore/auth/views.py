@@ -18,12 +18,11 @@ def signin(request):
         password = request.POST['password']
 
         user = authenticate(username=username, password=password)
-
         if user is not None:
             if user.is_active:
                 login(request, user)
                 if request.GET.get('next', False):
-                    return HttpResponseRedirect(request.GET['next'])
+                    return HttpResponseRedirect(request.GET.get('next', '/'))
                 else:
                     return HttpResponseRedirect("/")
         else:
