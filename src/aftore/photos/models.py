@@ -19,4 +19,4 @@ class Photo(models.Model):
 	    	img.save(self.get_medium_filename())
 	    	img.thumbnail((80,80), Image.ANTIALIAS)
 	    	img.save(self.get_small_filename())
-    	super(Photo, self).save()
+		super(Photo, self).save()

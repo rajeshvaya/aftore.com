@@ -1,11 +1,14 @@
 {% extends "layout/default/template.html" %}
 {% load aftore_extras %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 	<div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <h2>Submit form</h2>
+                {% crispy storyfrom %}
+                {% crispy photoformset %}
             </div>
         </div>
     </div> <!-- container -->
