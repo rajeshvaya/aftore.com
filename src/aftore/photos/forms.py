@@ -4,11 +4,13 @@ from crispy_forms.helper import FormHelper
 from photos.models import Photo
 
 class PhotoForm(ModelForm):
-	helper = FormHelper()
-	helper.form_tag = False
-	helper.error_text_inline = True
-	helper.label_class = "col-md-2"
-	helper.field_class = 'col-md-9'
+	
+	def __init__(self, *args, **kwargs):
+		super(PhotoForm, self).__init__(*args, **kwargs)
+		self.helper = FormHelper(self)
+		self.helper.form_tag = False
+		self.helper.label_class = "col-md-2"
+		self.helper.field_class = 'col-md-9'
 
 	class Meta:
 		model = Photo

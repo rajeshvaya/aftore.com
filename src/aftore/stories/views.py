@@ -24,9 +24,14 @@ def story(request, id=0):
 def submit(request):
 	s = Story()
 	PhotoFormSet = inlineformset_factory(Story, Photo, form=PhotoForm, can_delete=False)
-
 	storyform = StoryForm(instance=s)
-	photoformset = PhotoFormSet(instance=s)
+	photoformset = PhotoFormSet(instance=s)	
+
+	if request.method == 'POST':
+		storyform = StoryForm(request.POST)
+		if storyform.is_valid():
+			pass
+	
 	return render(request, 'stories/submit.html', {'storyfrom': storyform, 'photoformset': photoformset})
 
 def delete(request):

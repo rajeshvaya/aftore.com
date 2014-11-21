@@ -5,10 +5,18 @@
 {% block content %}
 	<div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <h2>Submit form</h2>
-                {% crispy storyfrom %}
-                {% crispy photoformset %}
+            <div class="col-md-8">
+                <h2>Submit your story</h2>
+                <hr/>
+                <form method="post" enctype="multipart/form-data">
+	                {% crispy storyfrom %}
+	                <br/><br/>
+	                {% crispy photoformset.form %}
+	                <br/><br/>
+	                <div class="col-md-9 col-md-offset-2">
+	                	<input type="submit" class='btn btn-danger'/>
+	                </div>
+	            </form>
             </div>
         </div>
     </div> <!-- container -->
