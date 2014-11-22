@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
-from django.forms.models import inlineformset_factory
+from django.forms.models import formset_factory
 
 from stories.models import Story
 from stories.forms import StoryForm
@@ -22,15 +22,22 @@ def story(request, id=0):
 
 @login_required
 def submit(request):
-	s = Story()
-	PhotoFormSet = inlineformset_factory(Story, Photo, form=PhotoForm, can_delete=False)
-	storyform = StoryForm(instance=s)
-	photoformset = PhotoFormSet(instance=s)	
-
+	PhotoFormSet = formset_factory(PhotoForm, extra=4)
 	if request.method == 'POST':
-		storyform = StoryForm(request.POST)
-		if storyform.is_valid():
-			pass
+		storyform = StoryForm(request.POST, request.FILES)
+		photoformset = PhotoFormSet(request.POST)	
+		print photoformset.is_valid()
+		if storyform.is_valid() and photoformset.is_valid():
+			s = Story(
+				title = storyform.cleaned_data['title'],
+				moderator = request.user
+			)
+			s.save();
+	else:
+		storyform = StoryForm()
+		photoformset = PhotoFormSet()	
+
+
 	
 	return render(request, 'stories/submit.html', {'storyfrom': storyform, 'photoformset': photoformset})
 

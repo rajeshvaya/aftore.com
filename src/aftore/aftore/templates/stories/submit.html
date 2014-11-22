@@ -12,10 +12,12 @@
 	                {% crispy storyfrom %}
 	                <br/><br/>
 	                {% crispy photoformset.form %}
+	                
 	                <br/><br/>
 	                <div class="col-md-9 col-md-offset-2">
 	                	<input type="submit" class='btn btn-danger'/>
 	                </div>
+					{% crispy photoformset.management_form %}
 	            </form>
             </div>
         </div>
