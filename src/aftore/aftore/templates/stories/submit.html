@@ -11,13 +11,14 @@
                 <form method="post" enctype="multipart/form-data">
 	                {% crispy storyfrom %}
 	                <br/><br/>
-	                {% crispy photoformset.form %}
-	                
+                    {{ photoformset.management_form }}
+	                {% for form in photoformset %}
+                        {% crispy form%}
+                    {% endfor %}
 	                <br/><br/>
 	                <div class="col-md-9 col-md-offset-2">
 	                	<input type="submit" class='btn btn-danger'/>
 	                </div>
-					{% crispy photoformset.management_form %}
 	            </form>
             </div>
         </div>

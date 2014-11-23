@@ -22,17 +22,26 @@ def story(request, id=0):
 
 @login_required
 def submit(request):
-	PhotoFormSet = formset_factory(PhotoForm, extra=4)
+	PhotoFormSet = formset_factory(PhotoForm, extra=1)
 	if request.method == 'POST':
 		storyform = StoryForm(request.POST, request.FILES)
-		photoformset = PhotoFormSet(request.POST)	
-		print photoformset.is_valid()
+		photoformset = PhotoFormSet(request.POST, request.FILES)	
+			
 		if storyform.is_valid() and photoformset.is_valid():
 			s = Story(
 				title = storyform.cleaned_data['title'],
 				moderator = request.user
 			)
 			s.save();
+
+			for form in photoformset.cleaned_data:
+				image = form['image']
+				p = Photo(
+					name=s.title,
+					story=s,
+					image=image
+				)
+				p.save()
 	else:
 		storyform = StoryForm()
 		photoformset = PhotoFormSet()	

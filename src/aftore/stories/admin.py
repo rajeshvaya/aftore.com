@@ -15,7 +15,7 @@ class StoryAdmin(admin.ModelAdmin):
 	# fields = ('title', 'url', 'moderator', 'created_at', 'updated_at')
 	fieldsets  = [
 		('Story', {
-			'fields' : ('title',)	
+			'fields' : ('title', 'slug',)	
 		}),
 		('Moderator',{
 			'classes': ('collapse',),
