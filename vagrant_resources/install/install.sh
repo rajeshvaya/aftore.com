@@ -71,3 +71,8 @@ if [[ ! -f /usr/local/bin/virtualenv ]]; then
 fi
 
 
+# install image manipulation libraries 
+
+apt-get install libjpeg-dev -y
+apt-get install zlib1g-dev -y
+apt-get install libpng12-dev -y
